@@ -1,12 +1,12 @@
-# CreditCardValidator [![Build Status](https://travis-ci.org/gustavofrizzo/CreditCardValidator.svg?branch=master)](https://travis-ci.org/gustavofrizzo/CreditCardValidator)
+# CreditCardValidator ![.NET Core](https://github.com/gustavofrizzo/CreditCardValidator/workflows/.NET%20Core/badge.svg)
 
 CreditCardValidator helps you implementing validations for the most common credit card brands, verifying length, prefixes and checking the card number through the Luhn algorithm if necessary.
 
 Nuget Package -> https://www.nuget.org/packages/CreditCardValidator
 
-## Issuing network Supported 
+## Supported Card Issuers 
 
-The following issuing institutes are supported:
+The following card issuers are supported:
 
 <table>
 <tr>
@@ -16,7 +16,7 @@ The following issuing institutes are supported:
 <td>Hipercard</td> <td>Visa</td>  <td>Laser</td> <td>ChinaUnionPay</td> <td>Dankort</td> 
 </tr>
 <tr>
-<td>Rupay</td> <td>Solo</td> <td>Switch</td> <td>JCB</td>
+<td>Rupay</td> <td>Solo (Deprecated)</td> <td>Switch</td> <td>JCB</td>
 </tr>
 </table>
 
@@ -39,7 +39,7 @@ detector.IssuerCategory; // => Banking and financial
 
 #### CreditCardFactory
 
-Generate random credit card numbers from a specific CardIssuer.
+Generates random credit card numbers of a specific CardIssuer.
 
 ```csharp
 string visaNumber = CreditCardFactory.RandomCardNumber(CardIssuer.Visa);
@@ -50,6 +50,13 @@ string masterCardNumber = CreditCardFactory.RandomCardNumber(CardIssuer.MasterCa
 // => 5201294442453002
 string chinaUnionPayNumber = CreditCardFactory.RandomCardNumber(CardIssuer.ChinaUnionPay);
 // => 6280209982074556
+```
+
+Generates random credit card numbers of a specific CardIssuer with any valid card length.
+
+```csharp
+string visaNumber = CreditCardFactory.RandomCardNumber(CardIssuer.Visa, 16);
+// => 4556672647860978
 ```
 
 #### CreditCardStringExtension
